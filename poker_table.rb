@@ -9,6 +9,7 @@ class PokerTable
       @variation = variation
       @betting_type = betting_type
       @competitions = competitions
+      @deck = Deck.new(@variation).cards
     end
 
     def type
@@ -16,27 +17,30 @@ class PokerTable
     end
 
     def deck
-      Deck.new(@variation).cards
+      @deck
     end
 
     def deal_hole_cards
       @cards = []
       if @variation == "holdem" || @variation == "royal"
         2.times { @cards << random_card }
-        binding.pry
       else
         4.times { @cards << random_card}
       end
       @cards
     end
 
-    def random_card
+    def deal_board_cards
+      # deck. pick 5 cards
+    end
+
+    private
+
+    def random_card    
       deck.delete_at(rand(deck.size))
     end
 
-    # def deal_board_cards
-    #   deck. pick 5 cards
-    # end
+
 
     # def min_raise
     #   if type

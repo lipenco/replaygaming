@@ -30,6 +30,12 @@ describe 'PokerTable' do
       cards = pkt.deal_hole_cards
       cards.size.should eq 4
     end
+
+    it 'it deletes distributed cards from deck array' do
+      pkt = PokerTable.new("holdem", nil, nil)
+      pkt.deal_hole_cards
+      pkt.deck.size.should eq 50
+    end
   end
 
 end
