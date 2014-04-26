@@ -38,6 +38,53 @@ describe 'PokerTable' do
     end
   end
 
+
+  describe '#deal_board_cards' do 
+    it 'it deal 5 random cards from the deck' do
+      pkt = PokerTable.new("holdem", nil, nil)
+      pkt.deal_board_cards
+      pkt.deck.size.should eq 47
+    end
+  end
+
+
+  describe '#min_raise' do 
+    it 'it returns rinse value for nl' do
+      pkt = PokerTable.new("holdem", "nl", nil)
+      pkt.min_raise.should eq 20
+    end
+
+    it 'it returns rinse value for fi' do
+      pkt = PokerTable.new("holdem", "fi", nil)
+      pkt.min_raise.should eq 100
+    end
+  end
+
+  describe '#max_raise' do 
+    it 'it returns rinse value for nl' do
+      pkt = PokerTable.new("holdem", "nl", nil)
+      pkt.max_raise.should eq 300
+    end
+
+    it 'it returns rinse value for fi' do
+      pkt = PokerTable.new("holdem", "fi", nil)
+      pkt.max_raise.should eq 100
+    end
+  end
+
+  describe '#type' do 
+    it 'it returns type' do
+      pkt = PokerTable.new("holdem", "nl", "mtt")
+      pkt.type.should eq "mtt"
+    end
+
+    it 'it returns nil if type is invalid' do
+      pkt = PokerTable.new("holdem", "fi", "invalid_type")
+      pkt.type.should eq nil
+    end
+  end
+
+
 end
 
 

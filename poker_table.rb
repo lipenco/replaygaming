@@ -13,7 +13,7 @@ class PokerTable
     end
 
     def type
-      @competitions
+      @competitions if ["mtt", "ring"].include?(@competitions)
     end
 
     def deck
@@ -31,7 +31,27 @@ class PokerTable
     end
 
     def deal_board_cards
-      # deck. pick 5 cards
+      @cards = []
+      5.times { @cards << random_card }
+      @cards
+    end
+
+    def min_raise
+      if @betting_type == "nl" || @betting_type == "pl"
+        20
+      else
+        100
+      end
+    end
+
+    def max_raise
+      if @betting_type == "nl" 
+        300
+      elsif @betting_type == "pl" 
+        200
+      else
+        100
+      end
     end
 
     private
@@ -39,22 +59,6 @@ class PokerTable
     def random_card    
       deck.delete_at(rand(deck.size))
     end
-
-
-
-    # def min_raise
-    #   if type
-    #     nl => 20
-    #     pl => 20
-    #     fl => 100
-    # end
-
-    # def max_raise
-    #   if type
-    #     nl => 300
-    #     pl => 200
-    #     fl => 100
-    # end
  
 end
 
@@ -94,10 +98,6 @@ class Deck
       royal_deck
     end 
   end
-
-  # def random_card
-  #   cards.delete_at(rand(cards.size))
-  # end
 
 end
 
