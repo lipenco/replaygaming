@@ -3,7 +3,7 @@ require 'pry'
 
 class PokerTable
 
-    attr_accessor :variation, :betting_type, :competitions
+    attr_reader :variation, :betting_type, :competitions
     
     def initialize(variation, betting_type, competitions)  
       @variation = variation
@@ -72,7 +72,6 @@ class Deck
   end
 
   def full_deck
-    @cards = []
     Card::SUITS.each do |suit|
       Card::RANKS.each do |rank|
         @cards << Card.new(rank, suit)
@@ -82,7 +81,6 @@ class Deck
   end
 
   def royal_deck
-    @cards = []
     Card::SUITS.each do |suit|
       Card::ROYAL_RANKS.each do |rank|
         @cards << Card.new(rank, suit)
