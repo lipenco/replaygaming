@@ -1,3 +1,3 @@
 
 
-Solution in poker_table.rb. Run the tests with `rspec`.
+Solution in lib. Run the tests with `rspec`.
