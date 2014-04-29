@@ -14,7 +14,7 @@ class Raise
       raise "Invalid betting type"
     end
   end
-  
+
 
   def max_raise
     if @betting_type == "nl" 
@@ -27,7 +27,4 @@ class Raise
       raise "Invalid betting type"
     end
   end
-
-
-
 end

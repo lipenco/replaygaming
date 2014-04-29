@@ -112,5 +112,3 @@ describe 'PokerTable' do
     end
   end
 end
-
-

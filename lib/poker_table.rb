@@ -43,6 +43,4 @@ class PokerTable
   def max_raise
     @raise.max_raise
   end
-
-
 end

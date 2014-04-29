@@ -35,6 +35,3 @@ class Dealer
   end
 
 end
-
-
-
