@@ -31,19 +31,32 @@ describe 'PokerTable' do
       cards.size.should eq 4
     end
 
-    it 'it deletes distributed cards from deck array' do
+    it 'deletes distributed cards from deck array' do
       pkt = PokerTable.new("holdem", nil, "mtt")
       pkt.deal_hole_cards
       pkt.deck.size.should eq 50
     end
+
+    # it 'deletes distributed cards from deck array2' do
+    #   pkt = PokerTable.new("holdem", nil, "mtt")
+    #   pkt.deal_hole_cards
+    #   pkt.deck.size.should eq 50
+    # end
+
   end
 
 
   describe '#deal_board_cards' do 
-    it 'it deal 5 random cards from the deck' do
+    it 'deletes distributed cards from deck array' do
       pkt = PokerTable.new("holdem", nil, "mtt")
       pkt.deal_board_cards
       pkt.deck.size.should eq 47
+    end
+
+    it 'returns 5 random cards from the deck' do
+      pkt = PokerTable.new("omaha", nil, "mtt")
+      cards = pkt.deal_board_cards
+      cards.size.should eq 5
     end
   end
 

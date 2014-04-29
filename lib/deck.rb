@@ -1,6 +1,7 @@
 
 class Deck
 
+
   def initialize(variation)
     @variation = variation
     @cards = []
@@ -24,7 +25,7 @@ class Deck
     @cards
   end
 
-  def cards
+  def deck
     if @variation == "holdem" || @variation == "omaha"
       full_deck  
     else

@@ -1,15 +1,16 @@
 require_relative 'card'
 require_relative 'deck'
+require_relative 'dealer'
 
 class PokerTable
 
-  attr_reader :betting_type, :deck, :type, :variation
+  attr_reader :betting_type, :type, :variation
   
   def initialize(variation, betting_type, type)  
     @variation = variation
     @betting_type = betting_type
     self.type = type
-    @deck = Deck.new(@variation).cards
+    @dealer = Dealer.new(@variation)
   end
 
   def type=(type)
@@ -20,20 +21,17 @@ class PokerTable
     end
   end
 
-  def deal_hole_cards
-    @cards = []
-    if @variation == "holdem" || @variation == "royal"
-      2.times { @cards << random_card }
-    else
-      4.times { @cards << random_card}
-    end
-    @cards
+  def deck
+    @dealer.deck
   end
 
+  def deal_hole_cards
+    @cards = @dealer.deal_hole_cards
+  end
+
+
   def deal_board_cards
-    @cards = []
-    5.times { @cards << random_card }
-    @cards
+    @cards = @dealer.deal_board_cards
   end
 
   def min_raise
@@ -58,9 +56,4 @@ class PokerTable
     end
   end
 
-  private
-
-  def random_card    
-    deck.delete_at(rand(deck.size))
-  end
 end
