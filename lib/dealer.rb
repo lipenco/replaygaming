@@ -6,8 +6,8 @@ class Dealer
   def initialize(variation)  
     @variation = variation
     @deck = Deck.new(@variation).deck
+    
   end
-
 
 
   def deal_hole_cards
@@ -28,8 +28,13 @@ class Dealer
   end
 
 
+  private
+
   def random_card    
     @deck.delete_at(rand(@deck.size))
   end
 
 end
+
+
+

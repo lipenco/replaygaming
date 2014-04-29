@@ -1,6 +1,7 @@
 require_relative 'card'
 require_relative 'deck'
 require_relative 'dealer'
+require_relative 'raise'
 
 class PokerTable
 
@@ -11,6 +12,7 @@ class PokerTable
     @betting_type = betting_type
     self.type = type
     @dealer = Dealer.new(@variation)
+    @raise = Raise.new(@betting_type)
   end
 
   def type=(type)
@@ -35,25 +37,12 @@ class PokerTable
   end
 
   def min_raise
-    if @betting_type == "nl" || @betting_type == "pl"
-      20
-    elsif @betting_type == "fl"
-      100
-    else
-      raise "Invalid betting type"
-    end
+    @raise.min_raise
   end
 
   def max_raise
-    if @betting_type == "nl" 
-      300
-    elsif @betting_type == "pl" 
-      200
-    elsif @betting_type == "fl"
-      100
-    else
-      raise "Invalid betting type"
-    end
+    @raise.max_raise
   end
+
 
 end
