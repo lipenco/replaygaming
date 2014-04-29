@@ -14,7 +14,7 @@ describe 'PokerTable' do
     it 'returns the deck for royal' do
       pkt = PokerTable.new("royal", nil, "mtt")
       royal_deck = pkt.deck
-      royal_deck.size.should eq 24
+      royal_deck.size.should eq 20
     end
   end
 
@@ -54,8 +54,8 @@ describe 'PokerTable' do
       pkt.min_raise.should eq 20
     end
 
-    it 'it returns rinse value for fi' do
-      pkt = PokerTable.new("holdem", "fi", "mtt")
+    it 'it returns rinse value for fl' do
+      pkt = PokerTable.new("holdem", "fl", "mtt")
       pkt.min_raise.should eq 100
     end
   end
@@ -66,8 +66,8 @@ describe 'PokerTable' do
       pkt.max_raise.should eq 300
     end
 
-    it 'it returns rinse value for fi' do
-      pkt = PokerTable.new("holdem", "fi", "mtt")
+    it 'it returns rinse value for fl' do
+      pkt = PokerTable.new("holdem", "fl", "mtt")
       pkt.max_raise.should eq 100
     end
   end
