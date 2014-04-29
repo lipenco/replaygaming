@@ -1,17 +1,20 @@
 require_relative 'card'
 require_relative 'deck'
 require_relative 'dealer'
+require_relative 'holdem_dealer'
+require_relative 'royal_dealer'
+require_relative 'omaha_dealer'
 require_relative 'raise'
 
 class PokerTable
 
   attr_reader :betting_type, :type, :variation
-  
-  def initialize(variation, betting_type, type)  
+
+  def initialize(variation, betting_type, type)
     @variation = variation
     @betting_type = betting_type
     self.type = type
-    @dealer = Dealer.new(@variation)
+    @dealer = Dealer.game_dealer(@variation)
     @raise = Raise.new(@betting_type)
   end
 

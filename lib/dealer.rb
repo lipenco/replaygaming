@@ -1,23 +1,18 @@
-class Dealer
+module Dealer
 
   attr_reader :deck
 
-
-  def initialize(variation)  
-    @variation = variation
-    @deck = Deck.new(@variation).deck
-    
-  end
-
-
-  def deal_hole_cards
-    @cards = []
-    if @variation == "holdem" || @variation == "royal"
-      2.times { @cards << random_card }
+  def self.game_dealer(game)
+    case game
+    when 'holdem'
+      HoldemDealer.new
+    when 'royal'
+      RoyalDealer.new
+    when 'omaha'
+      OmahaDealer.new
     else
-      4.times { @cards << random_card }
+      raise 'Unknown game'
     end
-    @cards
   end
 
 
@@ -27,11 +22,9 @@ class Dealer
     @cards
   end
 
-
   private
 
-  def random_card    
+  def random_card
     @deck.delete_at(rand(@deck.size))
   end
-
 end

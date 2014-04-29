@@ -17,8 +17,8 @@ class Deck
   end
 
   def royal_deck
-    Card::SUITS.each do |suit|
-      Card::ROYAL_RANKS.each do |rank|
+    Card::SUITS.map do |suit|
+      Card::ROYAL_RANKS.map do |rank|
         @cards << Card.new(rank, suit)
       end
     end
@@ -27,9 +27,9 @@ class Deck
 
   def deck
     if @variation == "holdem" || @variation == "omaha"
-      full_deck  
+      full_deck
     else
       royal_deck
-    end 
+    end
   end
 end
