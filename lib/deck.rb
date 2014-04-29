@@ -8,21 +8,11 @@ class Deck
   end
 
   def full_deck
-    Card::SUITS.each do |suit|
-      Card::RANKS.each do |rank|
-        @cards << Card.new(rank, suit)
-      end
-    end
-    @cards
+    Card::RANKS.product(Card::SUITS).map { |arr| Card.new(*arr)}
   end
 
   def royal_deck
-    Card::SUITS.map do |suit|
-      Card::ROYAL_RANKS.map do |rank|
-        @cards << Card.new(rank, suit)
-      end
-    end
-    @cards
+    Card::ROYAL_RANKS.product(Card::SUITS).map { |arr| Card.new(*arr)}
   end
 
   def deck

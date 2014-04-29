@@ -7,7 +7,7 @@ class OmahaDealer
 
   def deal_hole_cards
     @cards = []
-      4.times { @cards << random_card }
+    4.times { @cards << random_card }
     @cards
   end
 end
