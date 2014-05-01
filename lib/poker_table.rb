@@ -1,5 +1,6 @@
 require_relative 'card'
 require_relative 'deck'
+require_relative 'dealer_factory'
 require_relative 'dealer'
 require_relative 'holdem_dealer'
 require_relative 'royal_dealer'
@@ -14,7 +15,7 @@ class PokerTable
     @variation = variation
     @betting_type = betting_type
     self.type = type
-    @dealer = Dealer.game_dealer(@variation)
+    @dealer = DealerFactory.game_dealer(@variation)
     @raise = Raise.new(@betting_type)
   end
 
