@@ -6,8 +6,6 @@ class RoyalDealer
   end
 
   def deal_hole_cards
-    @cards = []
-      2.times { @cards << random_card }
-    @cards
+    @cards = (1..2).each_with_object([]) { |i, a| a << random_card}
   end
 end
