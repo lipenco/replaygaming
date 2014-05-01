@@ -1,14 +1,15 @@
 class Raise
 
-  def initialize(betting_type)  
+  def initialize(betting_type)
     @betting_type = betting_type
   end
 
 
   def min_raise
-    if @betting_type == "nl" || @betting_type == "pl"
+    case @betting_type
+    when 'nl' || 'pl'
       20
-    elsif @betting_type == "fl"
+    when 'fl'
       100
     else
       raise "Invalid betting type"
@@ -17,15 +18,15 @@ class Raise
 
 
   def max_raise
-    if @betting_type == "nl" 
+    case @betting_type
+    when 'nl'
       300
-    elsif @betting_type == "pl" 
+    when 'pl'
       200
-    elsif @betting_type == "fl"
+    when 'fl'
       100
     else
       raise "Invalid betting type"
     end
   end
 end
-
