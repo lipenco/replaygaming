@@ -7,7 +7,7 @@ class Raise
 
   def min_raise
     case @betting_type
-    when 'nl' || 'pl'
+    when 'nl', 'pl'
       20
     when 'fl'
       100
