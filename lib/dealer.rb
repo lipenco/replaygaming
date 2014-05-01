@@ -17,9 +17,7 @@ module Dealer
 
 
   def deal_board_cards
-    @cards = []
-    5.times { @cards << random_card }
-    @cards
+    @cards= (1..5).each_with_object([]) { |i, a| a << random_card}
   end
 
   private
